@@ -102,7 +102,6 @@ def api_info():
         'python_version': os.sys.version,
         'environment': dict(os.environ)
     })
-
 @app.route('/health')
 def health():
     """Health check endpoint"""

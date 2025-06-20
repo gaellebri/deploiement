@@ -1,0 +1,21 @@
+# docker-compose.yml
+services:
+  web:
+    build: .
+    ports:
+      - "8080:5000"
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - app-data:/app/data
+    restart: unless-stopped
+    
+  alpine:                    # ← Doit être au même niveau que "web"
+    hostname: alpine
+    image: alpine:latest
+    restart: always
+    command: top 
+
+volumes:
+  app-data:
+    driver: local
